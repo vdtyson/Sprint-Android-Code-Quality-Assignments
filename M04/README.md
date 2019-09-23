@@ -6,11 +6,11 @@ For this app, you'll build the UI for your calculator using the same test driven
 
 - Create a test in androidTest
 
-- Build the XML for the UI
-
 - Add use cases for every user interaction you will support before you add UI to support it.
 
   - Build a test `shouldAdd9ToUI` then add a click event to the button to handle that (be sure to use the code you wrote in the Calculator class to do this)
+
+- Build the XML for the UI
 
     
 
