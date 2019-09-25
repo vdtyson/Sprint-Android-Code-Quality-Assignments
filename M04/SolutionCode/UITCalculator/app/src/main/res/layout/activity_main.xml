@@ -309,6 +309,28 @@
         app:layout_constraintTop_toBottomOf="@+id/mem2Label" />
 
     <TextView
+        android:id="@+id/ansLengthLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:padding="2dp"
+        android:text="ansLength:"
+        app:layout_constraintEnd_toStartOf="@id/guideB"
+        app:layout_constraintTop_toBottomOf="@+id/opLabel" />
+
+    <TextView
+        android:id="@+id/ansLengthText"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="#b0b0b0"
+        android:padding="2dp"
+        android:text="NONE"
+        app:layout_constraintStart_toStartOf="@id/guideB"
+        app:layout_constraintTop_toBottomOf="@+id/opLabel" />
+
+    <TextView
         android:id="@+id/calcDisplay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

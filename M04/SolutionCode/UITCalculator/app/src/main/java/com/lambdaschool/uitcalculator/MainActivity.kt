@@ -1,20 +1,37 @@
 package com.lambdaschool.uitcalculator
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.lambdaschool.uitcalculator.logic.CalcEntity
 import kotlinx.android.synthetic.main.activity_main.*
+import java.math.BigDecimal
+
+fun Double.toBigDecimal(): BigDecimal = BigDecimal.valueOf(this)
+operator fun BigDecimal.plus(a: BigDecimal) = this.add(a)
+operator fun BigDecimal.minus(a: BigDecimal) = this.subtract(a)
+operator fun BigDecimal.times(a: BigDecimal) = this.multiply(a)
+operator fun BigDecimal.div(a: BigDecimal) = this.divide(a)
 
 enum class MathOp(mp: String) {
     NONE(""), DIVIDE("DIV"), MULTIPLY("MULT"), SUBTRACT("SUB"), ADD("ADD")
 }
 
 data class CalcState(
-    var mem1: Double = 0.0,
-    var mem2: Double? = null,
+    var mem1: BigDecimal = 0.toBigDecimal(),
+    var mem2: BigDecimal? = null,
     var op: MathOp = MathOp.NONE,
-    var dot: Boolean = false
-)
+    var dot: Boolean = false,
+    var dotLength: Int = 0 //especially useful for trailing zeroes to the right of the decimal
+) {
+    fun reset() {
+        mem1 = 0.toBigDecimal()
+        mem2 = null
+        op = MathOp.NONE
+        dot = false
+        dotLength = 0
+    }
+}
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,16 +42,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         initUI()
+
+        val a = 17.0.toBigDecimal()
+        val b = 3.2.toBigDecimal()
+        val c = a * b
+        Log.d("MSTR", "a=$a, b=$b")
+        Log.d("MSTR", "c=$c")
     }
 
     private fun initUI() {
         updateDisplay()
 
         clearEntry.setOnClickListener {
-            state.mem1 = CalcEntity.clearEntryCalc()
-            state.mem2 = null
-            state.op = MathOp.NONE
-            state.dot = false
+            state.reset()
             updateDisplay()
         }
 
@@ -101,14 +121,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateDisplay() {
-        mem1Text.text = "${state.mem1}"
-        mem2Text.text = "${state.mem2}"
-        opText.text = "${state.op}"
+        val mem1 = state.mem1
+        val mem2 = state.mem2
+        val op = state.op
+        val ansLength = state.dotLength
 
-        if (state.op == MathOp.NONE || state.mem2 == null) {
-            calcDisplay.text = state.mem1.toString()
+        mem1Text.text = "$mem1"
+        mem2Text.text = "$mem2"
+        opText.text = "$op"
+        ansLengthText.text = "$ansLength"
+
+        if (op == MathOp.NONE || (op != MathOp.NONE && mem2 == null)) {
+            calcDisplay.text = prepFinalAnswer(mem1, ansLength)
+        } else if (mem2 != null) {
+            calcDisplay.text = prepFinalAnswer(mem2, ansLength)
+        }
+    }
+
+    private fun prepFinalAnswer(mem: BigDecimal, ansLength: Int): String {
+        return if (ansLength > mem.toString().length) {
+            Log.d("MSTR", "aaa")
+            mem.toString().padEnd(ansLength, '0')
         } else {
-            calcDisplay.text = state.mem2.toString()
+            Log.d("MSTR", "bbb")
+            mem.toString()
         }
     }
 }
