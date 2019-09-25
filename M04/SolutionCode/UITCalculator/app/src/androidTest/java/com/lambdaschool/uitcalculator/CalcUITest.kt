@@ -45,91 +45,45 @@ class CalcUITest {
         onView(withId(R.id.calcDisplay)).check(matches(withText("0.0")))
     }
 
-//    @Test
-//    fun shouldAdd9ToUI() {
-//        clearEntry()
-//        onView(withId(R.id.digit9)).perform(ViewActions.click())
-//        onView(withId(R.id.calcDisplay)).check(matches(isChecked()))
-//    }
-
-    /*@Test
-    fun c_changeEditText_validEmails() {
-
-        val validEmails = listOf(
-            "valid@email.com",
-            "more@email.co"
-        )
-
-        validEmails.forEach { email ->
-            // Type text and then press the button.
-            onView(withId(R.id.editTextUserEmail)).perform(
-                clearText(),
-                typeText(email),
-                closeSoftKeyboard()
-            )
-
-
-            // View Matcher ("matches(...)")
-            onView(withId(R.id.chkEmail)).check(matches(isChecked()))
-        }
-    }
-
     @Test
-    fun d_changeEditText_invalidEmails() {
+    fun shouldAdd1to9ToUI() {
+        clearEntry()
+        onView(withId(R.id.digit1)).perform(ViewActions.click())
+        onView(withId(R.id.calcDisplay)).check(matches(withText("1.0")))
 
-        val invalidEmails = listOf(
-            "valid@email.",
-            "more@emailco"
-        )
+        clearEntry()
+        onView(withId(R.id.digit2)).perform(ViewActions.click())
+        onView(withId(R.id.calcDisplay)).check(matches(withText("2.0")))
 
-        invalidEmails.forEach { email ->
-            // Type text and then press the button.
-            onView(withId(R.id.editTextUserEmail)).perform(
-                clearText(),
-                typeText(email),
-                closeSoftKeyboard()
-            )
+        clearEntry()
+        onView(withId(R.id.digit3)).perform(ViewActions.click())
+        onView(withId(R.id.calcDisplay)).check(matches(withText("3.0")))
 
-            onView(withId(R.id.chkEmail)).check(matches(isNotChecked()))
-        }
+        clearEntry()
+        onView(withId(R.id.digit4)).perform(ViewActions.click())
+        onView(withId(R.id.calcDisplay)).check(matches(withText("4.0")))
+
+        clearEntry()
+        onView(withId(R.id.digit5)).perform(ViewActions.click())
+        onView(withId(R.id.calcDisplay)).check(matches(withText("5.0")))
+
+        clearEntry()
+        onView(withId(R.id.digit6)).perform(ViewActions.click())
+        onView(withId(R.id.calcDisplay)).check(matches(withText("6.0")))
+
+        clearEntry()
+        onView(withId(R.id.digit7)).perform(ViewActions.click())
+        onView(withId(R.id.calcDisplay)).check(matches(withText("7.0")))
+
+        clearEntry()
+        onView(withId(R.id.digit8)).perform(ViewActions.click())
+        onView(withId(R.id.calcDisplay)).check(matches(withText("8.0")))
+
+        clearEntry()
+        onView(withId(R.id.digit9)).perform(ViewActions.click())
+        onView(withId(R.id.calcDisplay)).check(matches(withText("9.0")))
     }
-
-    @Test
-    fun e_changeEditText_validPasswords() {
-
-        val validPasswords = listOf(
-            "Adj$2k-29!",
-            "029njnJhj3bj-JKJ$()"
-        )
-
-        validPasswords.forEach { pwd ->
-            // Type text and then press the button.
-            onView(withId(R.id.editTextUserPassword)).perform(
-                clearText(),
-                typeText(pwd),
-                closeSoftKeyboard()
-            )
-            onView(withId(R.id.chkPassword)).check(matches(isChecked()))
-        }
-    }
-
-    @Test
-    fun f_changeEditText_invalidPasswords() {
-
-        val invalidPasswords = listOf(
-            "Adj\$sk-!",
-            "029njnJhj3bjJKJ"
-        )
-
-        invalidPasswords.forEach { pwd ->
-            // Type text and then press the button.
-            onView(withId(R.id.editTextUserPassword)).perform(
-                *commonViewActions(pwd)
-            )
-            onView(withId(R.id.chkPassword)).check(matches(isNotChecked()))
-        }
-    }*/
 
     fun clearEntry(): ViewInteraction =
-        onView(withId(R.id.calcDisplay)).perform(ViewActions.click())
+        onView(withId(R.id.clearEntry)).perform(ViewActions.click())
 }
