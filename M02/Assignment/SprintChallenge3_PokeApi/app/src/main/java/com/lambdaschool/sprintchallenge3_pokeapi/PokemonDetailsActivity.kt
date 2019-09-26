@@ -8,33 +8,18 @@ import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_pokemon_details.*
 
 import java.util.ArrayList
 
 class PokemonDetailsActivity : AppCompatActivity() {
-
-    internal var textName: TextView? = null
-    internal var textTypeA: TextView? = null
-    internal var textTypeB: TextView? = null
-    internal var textId: TextView? = null
-    internal var movesListLayout: LinearLayout? = null
-    internal var image: ImageView? = null
 
     internal var pokemon: Pokemon? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokemon_details)
-
-        textName = findViewById(R.id.text_title)
-        textTypeA = findViewById(R.id.type_A)
-        textTypeB = findViewById(R.id.type_B)
-        textId = findViewById(R.id.text_number)
-        movesListLayout = findViewById(R.id.layout_moves_list)
-        image = findViewById(R.id.background_image)
 
         GetPokemon().execute(intent.getStringExtra("Search_Parameter"))
     }
@@ -55,16 +40,16 @@ class PokemonDetailsActivity : AppCompatActivity() {
     inner class GetPokemon : AsyncTask<String, Pokemon, Bitmap>() {
 
         override fun onPostExecute(bitmap: Bitmap) {
-            image?.setImageBitmap(bitmap)
+            background_image?.setImageBitmap(bitmap)
             findViewById<View>(R.id.progress_circular).visibility = View.INVISIBLE
         }
 
         override fun onProgressUpdate(vararg values: Pokemon) {
             pokemon = values[0]
-            textName?.text = values[0].name
-            textTypeA?.text = values[0].typeA
-            textTypeB?.text = values[0].typeB
-            textId?.text = String.format("No %03d", values[0].id)
+            text_title?.text = values[0].name
+            type_A?.text = values[0].typeA
+            type_B?.text = values[0].typeB
+            text_number?.text = String.format("No %03d", values[0].id)
 
             val movesViews = ArrayList<View>()
             for (move in values[0].moves!!) {
@@ -72,7 +57,7 @@ class PokemonDetailsActivity : AppCompatActivity() {
             }
             runOnUiThread {
                 for (moveView in movesViews) {
-                    movesListLayout?.addView(moveView)
+                    layout_moves_list?.addView(moveView)
                 }
             }
         }

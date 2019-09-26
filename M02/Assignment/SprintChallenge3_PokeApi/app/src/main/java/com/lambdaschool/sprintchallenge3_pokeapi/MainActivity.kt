@@ -7,12 +7,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    internal var namesLayout: LinearLayout? = null
     internal var context: Context? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         context = this
-        namesLayout = findViewById(R.id.names_list_layout)
+        names_list_layout
 
         findViewById<View>(R.id.search_button).setOnClickListener {
             val intent = Intent(context, PokemonDetailsActivity::class.java)
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, 0)
         }
         view.setOnLongClickListener { clickedView ->
-            namesLayout?.removeView(clickedView)
+            names_list_layout?.removeView(clickedView)
             true
         }
         return view
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             when (requestCode) {
                 0 -> {
                     val pokemon = data!!.getSerializableExtra("pokemon") as Pokemon
-                    namesLayout?.addView(buildTextView(pokemon.name))
+                    names_list_layout?.addView(buildTextView(pokemon.name))
                 }
             }
         }
