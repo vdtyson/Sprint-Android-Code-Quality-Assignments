@@ -12,3 +12,7 @@ As a recap, the project when working properly should:
 
 - Allow the user to create notes that are saved to a Firebase Database and an on-device persistent store using an SQL database
 - The device's persistent store is synchronized with the Firebase Database. (When a journal entry is saved to the device's persistent store it gets sent to Firebase, and vice-versa.
+
+-- No default activity
+-- Typos in the XML
+-- Scroll view for main activity set to 0dp
