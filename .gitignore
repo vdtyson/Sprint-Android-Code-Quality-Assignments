@@ -81,6 +81,11 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 .idea
+<<<<<<< HEAD
 /.DS_Store
 /M01/.DS_Store
 /M01/Assignment/.DS_Store
+=======
+
+.DS_Store
+>>>>>>> 6b249a982c29ce746f95b34dde33a2a30dba5a9d
