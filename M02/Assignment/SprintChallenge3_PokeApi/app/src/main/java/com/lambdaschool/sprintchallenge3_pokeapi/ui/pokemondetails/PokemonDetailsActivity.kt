@@ -1,4 +1,4 @@
-package com.lambdaschool.sprintchallenge3_pokeapi
+package com.lambdaschool.sprintchallenge3_pokeapi.ui.pokemondetails
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import com.lambdaschool.sprintchallenge3_pokeapi.PokemonDao
+import com.lambdaschool.sprintchallenge3_pokeapi.R
 import com.lambdaschool.sprintchallenge3_pokeapi.model.Pokemon
 import kotlinx.android.synthetic.main.activity_pokemon_details.*
 
