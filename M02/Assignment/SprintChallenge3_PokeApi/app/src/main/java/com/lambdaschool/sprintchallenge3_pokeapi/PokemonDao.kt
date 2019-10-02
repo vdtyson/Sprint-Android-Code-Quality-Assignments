@@ -1,5 +1,6 @@
 package com.lambdaschool.sprintchallenge3_pokeapi
 
+import com.lambdaschool.sprintchallenge3_pokeapi.model.Pokemon
 import org.json.JSONException
 import org.json.JSONObject
 

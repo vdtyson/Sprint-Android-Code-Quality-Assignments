@@ -1,6 +1,7 @@
-package com.lambdaschool.sprintchallenge3_pokeapi
+package com.lambdaschool.sprintchallenge3_pokeapi.model
 
 import android.graphics.Bitmap
+import com.lambdaschool.sprintchallenge3_pokeapi.NetworkAdapter
 import org.json.JSONException
 import org.json.JSONObject
 
