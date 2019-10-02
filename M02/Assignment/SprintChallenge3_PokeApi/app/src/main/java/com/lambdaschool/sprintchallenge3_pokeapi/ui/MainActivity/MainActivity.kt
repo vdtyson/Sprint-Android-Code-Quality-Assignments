@@ -1,4 +1,4 @@
-package com.lambdaschool.sprintchallenge3_pokeapi
+package com.lambdaschool.sprintchallenge3_pokeapi.ui.MainActivity
 
 import android.app.Activity
 import android.content.Context
@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import com.lambdaschool.sprintchallenge3_pokeapi.PokemonDetailsActivity
+import com.lambdaschool.sprintchallenge3_pokeapi.R
 import com.lambdaschool.sprintchallenge3_pokeapi.model.Pokemon
 import kotlinx.android.synthetic.main.activity_main.*
 

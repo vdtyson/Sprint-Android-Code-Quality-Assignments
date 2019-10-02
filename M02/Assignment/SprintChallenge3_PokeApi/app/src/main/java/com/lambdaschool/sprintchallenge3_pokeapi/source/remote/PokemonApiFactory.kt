@@ -1,4 +1,4 @@
-package com.lambdaschool.sprintchallenge3_pokeapi.source
+package com.lambdaschool.sprintchallenge3_pokeapi.source.remote
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

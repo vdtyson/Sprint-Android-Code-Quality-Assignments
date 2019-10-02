@@ -1,4 +1,4 @@
-package com.lambdaschool.sprintchallenge3_pokeapi.source
+package com.lambdaschool.sprintchallenge3_pokeapi.source.remote
 
 import com.lambdaschool.sprintchallenge3_pokeapi.PokemonDao
 import com.lambdaschool.sprintchallenge3_pokeapi.model.Pokemon
