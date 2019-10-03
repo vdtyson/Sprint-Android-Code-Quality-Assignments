@@ -1,13 +1,16 @@
-package com.lambdaschool.sprintchallenge3_pokeapi
+package com.lambdaschool.sprintchallenge3_pokeapi.ui.main
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import com.lambdaschool.sprintchallenge3_pokeapi.ui.pokemondetails.PokemonDetailsActivity
+import com.lambdaschool.sprintchallenge3_pokeapi.R
+import com.lambdaschool.sprintchallenge3_pokeapi.model.Pokemon
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

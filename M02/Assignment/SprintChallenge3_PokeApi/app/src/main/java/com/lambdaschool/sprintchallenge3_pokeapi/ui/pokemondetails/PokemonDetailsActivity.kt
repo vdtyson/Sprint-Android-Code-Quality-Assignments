@@ -1,14 +1,17 @@
-package com.lambdaschool.sprintchallenge3_pokeapi
+package com.lambdaschool.sprintchallenge3_pokeapi.ui.pokemondetails
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.AsyncTask
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import com.lambdaschool.sprintchallenge3_pokeapi.PokemonDao
+import com.lambdaschool.sprintchallenge3_pokeapi.R
+import com.lambdaschool.sprintchallenge3_pokeapi.model.Pokemon
 import kotlinx.android.synthetic.main.activity_pokemon_details.*
 
 import java.util.ArrayList
@@ -53,7 +56,7 @@ class PokemonDetailsActivity : AppCompatActivity() {
 
             val movesViews = ArrayList<View>()
             for (move in values[0].moves!!) {
-                movesViews.add(buildTextView(move))
+                movesViews.add(buildTextView(move.toString()))
             }
             runOnUiThread {
                 for (moveView in movesViews) {
@@ -65,8 +68,8 @@ class PokemonDetailsActivity : AppCompatActivity() {
         @SuppressLint("WrongThread")
         override fun doInBackground(vararg strings: String): Bitmap? {
             val loading = PokemonDao.getPokemon(strings[0])
-            onProgressUpdate(loading)
-            return loading.sprite
+            loading?.let { onProgressUpdate(it) }
+            return loading?.spriteBitmap()
         }
     }
 }
