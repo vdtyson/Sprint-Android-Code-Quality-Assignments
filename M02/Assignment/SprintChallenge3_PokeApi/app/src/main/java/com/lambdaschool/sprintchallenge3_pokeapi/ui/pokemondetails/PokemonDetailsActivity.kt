@@ -56,7 +56,7 @@ class PokemonDetailsActivity : AppCompatActivity() {
 
             val movesViews = ArrayList<View>()
             for (move in values[0].moves!!) {
-                movesViews.add(buildTextView(move))
+                movesViews.add(buildTextView(move.toString()))
             }
             runOnUiThread {
                 for (moveView in movesViews) {
@@ -68,8 +68,8 @@ class PokemonDetailsActivity : AppCompatActivity() {
         @SuppressLint("WrongThread")
         override fun doInBackground(vararg strings: String): Bitmap? {
             val loading = PokemonDao.getPokemon(strings[0])
-            onProgressUpdate(loading)
-            return loading.sprite
+            loading?.let { onProgressUpdate(it) }
+            return loading?.spriteBitmap()
         }
     }
 }

@@ -32,7 +32,7 @@ object NetworkAdapter {
             connection.requestMethod = requestType
 
             connection.connect()
-
+            //
             val responseCode = connection.responseCode
 
             if (responseCode != HttpsURLConnection.HTTP_OK)
