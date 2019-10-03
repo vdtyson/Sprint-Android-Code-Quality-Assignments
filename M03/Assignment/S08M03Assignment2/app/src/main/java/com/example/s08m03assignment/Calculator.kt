@@ -9,8 +9,8 @@ class Calculator {
         return "$symbol$numberAsString"
     }
 
-    fun addNumbers(numbersToAdd: List<Int>) : Int {
-        return numbersToAdd.sum()
+    fun addNumbers(num1: Int, num2: Int) : Int {
+        return num1 + num2
     }
 
     fun subtractNumbers(number1: Int, number2: Int) : Int {

@@ -55,29 +55,11 @@ class CalculatorUnitTest {
 
 
         //EXECUTE
-        sum = calculator.addNumbers(numbersToAdd)
+        sum = calculator.addNumbers(numbersToAdd[0], numbersToAdd[1])
 
         // CHECK
         assertEquals(expected, sum)
 
-    }
-
-    @Test
-    fun addNumbersTest_AddMultipleNumbers() {
-
-        // SETUP
-        val numbersToAdd = listOf(
-            14, 12, 18, 32
-        )
-        val sum: Int
-        val expected = 76
-        val calculator = Calculator()
-
-        // EXECUTE
-        sum = calculator.addNumbers(numbersToAdd)
-
-        // CHECK
-        assertEquals(expected, sum)
     }
 
     @Test
@@ -124,5 +106,26 @@ class CalculatorUnitTest {
 
         // CHECK
         assertEquals(expected, result)
+    }
+    @Test
+    fun AddThenMultiplyTest() {
+
+        //SETUP
+        val numbersToAdd = listOf(
+            1, 2
+        )
+        val multiplyBy = 8
+        val finalResult: Int
+        val expected = 24
+        val sumResult: Int
+        val productResult: Int
+
+        // EXECUTE
+        sumResult = calculator.addNumbers(numbersToAdd[0], numbersToAdd[1])
+        productResult = calculator.multiplyNumbers(multiplyBy, sumResult)
+        finalResult = productResult
+
+        // CHECK
+        assertEquals(expected, finalResult)
     }
 }
